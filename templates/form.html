@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div>
+        {% for floor in map|reverse %}
+        <tr>
+            {% for room in floor %}
+            <td>{{ room }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </div>
+    <div>
+        Game Status: {{ status }} <br>
+        Current Floor: {{ position[0] + 1 }} <br>
+        Current Room: {{ position[1] + 1 }} <br>
+        Current Items:
+        {% for item in items %}
+            {{ item }}
+        {% endfor %} <br>
+        This room has: {{ map[position[0]][position[1]] }} <br>
+        {{ hint }}
+    </div>
+
+    <div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                <b>Select your command: </b>
+                {% for command in commands %}
+                {{ command }}
+                {% endfor %}
+            </p>
+            <p> {{ form.command(size=32) }} {{ form.submit }} {{ form.reset }}</p>
+        </form>
+    </div>
+
+{% endblock %}

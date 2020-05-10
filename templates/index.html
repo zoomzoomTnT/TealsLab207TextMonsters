@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEALS Lab2.07 Text Monsters</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<table>
+    {% if status == "win" or status == "loss" %}
+        <h1>You {{ status }}!</h1>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</table>
+</body>
+</html>
